@@ -2,14 +2,14 @@ const express = require('express');
 const app = express();
 require('dotenv').config()
 
-const repository = require('./model/alunoModel');
+const rotas = require('./model/alunoModel');
 app.use(express.json());
 
-app.post('/login', repository.login)
-app.get('/alunos', repository.getAlunos)
-app.get('/alunos/:id', repository.getAlunoById)
-app.post('/alunos', repository.verifyJWT, repository.createAluno)
-app.put('/alunos/:id', repository.verifyJWT, repository.updateAluno)
-app.delete('/alunos/:id', repository.verifyJWT, repository.deleteAluno)
+app.post('/login', rotas.login)
+app.get('/alunos', rotas.getAlunos)
+app.get('/alunos/:id', rotas.getAlunoById)
+app.post('/alunos', rotas.verifyJWT, rotas.createAluno)
+app.put('/alunos/:id', rotas.verifyJWT, rotas.updateAluno)
+app.delete('/alunos/:id', rotas.verifyJWT, rotas.deleteAluno)
 
 app.listen(process.env.PORT);
